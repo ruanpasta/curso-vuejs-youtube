@@ -6,20 +6,28 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Aula 01 - Vuejs</title>
 	<style>
-		.some-text {
+		.message {
+			font-size: 18px;
+		}
+		.success {
+			color: green;
+		}
+		.error {
 			color: red;
+		}
+		.warning {
+			color: orange;
+		}
+		.bold-message {
+			 font-weight: 700;
 		}
 	</style>
 </head>
 <body>
 	<div id="app">
 		<h1>{{ titulo }}</h1>
-		<img 
-			:src="imagem"
-			:alt="alt"
-		>
-		
-		<p v-bind:class="classeTexto">Algum texto aqui</p>
+		<p class="message" :class="messageSeverity" :style="messageStyle">Algum texto aqui</p>
+		<p :class="warningMessage">Algum texto aqui</p>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
@@ -29,9 +37,15 @@
 			el: "#app",
 			data: {
 				titulo: "Aula 01 - Vuejs",
-				imagem: 'https://www.dotcom-monitor.com/blog/wp-content/uploads/sites/3/2020/05/Vue-logo-1.png',
-				alt: 'Imagem do vuejs',
-				classeTexto: 'some-text'
+				messageSeverity: {
+					'error': true, 
+					'warning': false, 
+					'success': false, 
+				},
+				warningMessage: [
+					'message', 'warning', { 'bold-message': true }
+				],
+				messageStyle: { 'font-size': '50px' }
 		}});
 	</script>
 </body>
