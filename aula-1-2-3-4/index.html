@@ -10,12 +10,9 @@
 	<div id="app">
 		<h1>{{ titulo }}</h1>
 		
-		<div v-if="usuario.id === 1">
-			id: {{ usuario.id }}, <br />
-			nome: {{ usuario.nome }}, <br />
-			profissao: {{ usuario.profissao }}, <br />
-		</div>
-		<div v-else>Nenhum usuario encontrado</div>
+		<ul>
+			<li v-for="(item, index) of linguagens">{{ index }} - {{ item.nome }}</li>
+		</ul>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
@@ -25,13 +22,14 @@
 			el: "#app",
 			data: {
 				titulo: "Aula 01 - Vuejs",
-				usuario: {
-					id: 1,
-					nome: "Ruan Pasta",
-					profissao: "Programador"
-				}
-			}
-		});
+				linguagens: [
+					{ nome: "Javascript" },
+					{ nome: "PHP" },
+					{ nome: "C#" },
+					{ nome: "Java" },
+					{ nome: "Python" },
+				]
+		}});
 	</script>
 </body>
 </html>
