@@ -5,48 +5,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Aula 01 - Vuejs</title>
+	<style>
+		.some-text {
+			color: red;
+		}
+	</style>
 </head>
 <body>
 	<div id="app">
 		<h1>{{ titulo }}</h1>
-		<label for="nome">Nome</label><br>
-		<input id="nome" type="text" v-model="nome">
-
-		<br><br>
-		<label for="telefone">Telefone</label><br>
-		<input id="telefone" type="text" v-model="telefone">
-		<br><br>
-
-		<label for="novidades">Deseha receber bissas bivudades?</label><br>
-		<input id="novidades" type="radio" value="true" v-model="novidades"> Sim
-		<input id="novidades" type="radio" value="false" v-model="novidades"> Nao
-
-		<br><br>
-		<label for="">Interesses</label><br>
-		<input type="checkbox" value="Futebol" v-model="interesses"> Futebol
-		<input type="checkbox" value="Formula 1" v-model="interesses"> Formula 1
-		<input type="checkbox" value="Corrida" v-model="interesses"> Corrida
-
-		<br><br>
-		<label for="conheceu">Como nos conheceu?</label><br>
-		<select id="conheceu" v-model="conheceu">
-			<option value="" v-model="interesses">Escolha</option>
-			<option value="Google" v-model="interesses">Google</option>
-			<option value="TV" v-model="interesses">TV</option>
-			<option value="Revist" v-model="interesses">Revista</option>
-		</select>
-
-		<br><br>
-		<button>Enviar</button>
-
-		<hr>
-
-		Nome: {{ nome }}<br>
-		telefone: {{ telefone }}<br>
-		novidades: {{ novidades }}<br>
-		interesses: {{ interesses }}<br>
-		conheceu: {{ conheceu }}<br>
-
+		<img 
+			:src="imagem"
+			:alt="alt"
+		>
+		
+		<p v-bind:class="classeTexto">Algum texto aqui</p>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
@@ -56,11 +29,9 @@
 			el: "#app",
 			data: {
 				titulo: "Aula 01 - Vuejs",
-				nome: '',
-				telefone: '',
-				novidades: null,
-				interesses: [],
-				conheceu: ""
+				imagem: 'https://www.dotcom-monitor.com/blog/wp-content/uploads/sites/3/2020/05/Vue-logo-1.png',
+				alt: 'Imagem do vuejs',
+				classeTexto: 'some-text'
 		}});
 	</script>
 </body>
