@@ -26,8 +26,9 @@
 <body>
 	<div id="app">
 		<h1>{{ titulo }}</h1>
-		<p class="message" :class="messageSeverity" :style="messageStyle">Algum texto aqui</p>
-		<p :class="warningMessage">Algum texto aqui</p>
+		<form action="http://google.com.br">
+			<button v-on:click.prevent.stop="enviar()">Enviar</button>
+		</form>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
@@ -37,16 +38,13 @@
 			el: "#app",
 			data: {
 				titulo: "Aula 01 - Vuejs",
-				messageSeverity: {
-					'error': true, 
-					'warning': false, 
-					'success': false, 
-				},
-				warningMessage: [
-					'message', 'warning', { 'bold-message': true }
-				],
-				messageStyle: { 'font-size': '50px' }
-		}});
+			},
+			methods: {
+				enviar() {
+					alert('Enviado!')
+				}
+			}
+	});
 	</script>
 </body>
 </html>
