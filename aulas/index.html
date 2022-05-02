@@ -26,6 +26,11 @@
 <body>
 	<div id="app">
 		<h1>{{ titulo }}</h1>
+
+		<ul>
+			<li v-for="usuario in usuarios">{{ usuario.nome | toUpperCase() | truncate(usuario.nome.length) }}</li>
+		</ul>
+
 		<form action="http://google.com.br">
 			<button v-on:click.prevent.stop="enviar()">Enviar</button>
 		</form>
@@ -38,6 +43,20 @@
 			el: "#app",
 			data: {
 				titulo: "Aula 01 - Vuejs",
+				usuarios: [
+					{ nome: 'Jon Snow' },
+					{ nome: 'Tyrion Lannister' },
+					{ nome: 'Daenerys Targaryen' },
+				]
+			},
+			filters: {
+				toUpperCase(str) {
+					return str.toUpperCase();
+				},
+				truncate(str, length) {
+					if (length > 10)return str.substring(0, 10).concat(' ...');
+					return str;
+				}
 			},
 			methods: {
 				enviar() {
