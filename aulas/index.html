@@ -27,20 +27,20 @@
 	<div id="app">
 		<h1>{{ titulo }}</h1>
 		<navbar></navbar>
-		<menu-bar></menu-bar>
+		<menu-bar :items="[{label: 'Empresa'}, {label: 'Servicos'}]"></menu-bar>
 	</div>
 
 	<template id="nav">
 		<div class="navbar">
-			<menu-bar></menu-bar>
+			<menu-bar :items="topNav" @emit-click="getLink"></menu-bar>
 		</div>
 	</template>
 
 	<template id="menu">
 		<ul>
-			<li>Item 1</li>
-			<li>Item 2</li>
-			<li>Item 3</li>
+			<li v-for="(item, index) of items">
+				<a  @click.stop.prevent="emitClick(index)" href="#">{{ item.label }}</a>
+			</li>
 		</ul>
 	</template>
 
@@ -48,10 +48,33 @@
 
 	<script>
 		Vue.component('navbar', {
-			template: "#nav"
+			template: "#nav",
+			data() {
+				return {
+					topNav: [{label: 'Home'}, {label: 'Link'}, {label: 'Disabled'}]
+				}
+			},
+			methods: {
+				getLink(index) {
+					alert(this.topNav[index].label);
+				}
+			}
 		});
 		Vue.component('menu-bar', {
-			template: "#menu"
+			template: "#menu",
+			// props: ['items']
+			props: {
+				items: {
+					type: Array,
+					required: true,
+					default: []
+				}
+			},
+			methods: {
+				emitClick(index) {
+					this.$emit('emit-click', index)
+				}
+			}
 		});
 
 		var app = new Vue({
