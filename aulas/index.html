@@ -6,14 +6,35 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Aula 01 - Vuejs</title>
 	<style>
+		.navbar {
+			width: 100%;
+			background-color: slategray;
+			color: white;
+			padding: 15px 5px;
+		}
+
+		.navbar > ul {
+			display: flex;
+			list-style-type: none;
+		}
+
+		.navbar > ul * {
+			margin-left: 10px;
+		}
 	</style>
 </head>
 <body>
 	<div id="app">
 		<h1>{{ titulo }}</h1>
-		<menu-bar></menu-bar>
+		<navbar></navbar>
 		<menu-bar></menu-bar>
 	</div>
+
+	<template id="nav">
+		<div class="navbar">
+			<menu-bar></menu-bar>
+		</div>
+	</template>
 
 	<template id="menu">
 		<ul>
@@ -26,6 +47,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
 	<script>
+		Vue.component('navbar', {
+			template: "#nav"
+		});
 		Vue.component('menu-bar', {
 			template: "#menu"
 		});
