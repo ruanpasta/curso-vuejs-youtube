@@ -6,52 +6,35 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Aula 01 - Vuejs</title>
 	<style>
-		.message {
-			font-size: 18px;
-		}
-		.success {
-			color: green;
-		}
-		.error {
-			color: red;
-		}
-		.warning {
-			color: orange;
-		}
-		.bold-message {
-			 font-weight: 700;
-		}
 	</style>
 </head>
 <body>
 	<div id="app">
 		<h1>{{ titulo }}</h1>
-		{{fullName}}
+		<menu-bar></menu-bar>
+		<menu-bar></menu-bar>
 	</div>
+
+	<template id="menu">
+		<ul>
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
+		</ul>
+	</template>
 
 	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
 	<script>
+		Vue.component('menu-bar', {
+			template: "#menu"
+		});
+
 		var app = new Vue({
 			el: "#app",
-			beforeCreated() {},
-			created() {},
-			beforeMount() {},
-			mounted() {},
-			beforeUpdate() {},
-			updated() {},
 			data: {
 				titulo: "Aula 01 - Vuejs",
-				firstName: 'John',
-				lastName: 'Snow'
 			},
-			computed: {
-				fullName() {
-					return `${this.firstName} ${this.lastName}`
-				}
-			},
-			methods: {
-			}
 	});
 	</script>
 </body>
